@@ -146,6 +146,6 @@ X_Info_1 = X_Info[-1].reshape(1,-1)
 prediction = model.predict([X_pred_All,X_Info_1])
 st.markdown('### Вероятность следующего гола: '+str(round(prediction[0,0]*100,2))+'%')
 
-if prediction[0,0]*100>=50 and coef_total_over>=2:
+if prediction[0,0]*100>=50 and float(coef_total_over)>=2:
   text_message=id_match+'\n'+date+'\n'+tournament+'\n'+team_1+' - '+team_2+'\nСчет: '+score_1+':'+score_2+'\nТотал больше: '+total+'\nКоэф.: '+coef_total_over+'\nВероятн.след.гола: '+str(round(prediction[0,0]*100,2))+'%'+'\n'+link
   requests.get('https://api.telegram.org/bot5333091819:AAFvBqeHc_6yNxv6T6LuMKpHV7F-6464_f4/sendMessage?chat_id=237194020&text='+text_message)
